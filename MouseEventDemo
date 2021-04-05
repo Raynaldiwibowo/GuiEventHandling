@@ -1,0 +1,72 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.mycompany.guieventhandling;
+
+import java.awt.BorderLayout;
+import java.awt.Frame;
+import java.awt.HeadlessException;
+import java.awt.TextField;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+/**
+ *
+ * @author Outstanding Student
+ */
+public class MouseEventDemo extends Frame implements MouseListener,
+MouseMotionListener{
+ TextField tf;
+ public MouseEventDemo(String title) throws HeadlessException {
+ super(title);
+ tf = new TextField(60);
+ addMouseListener(this);
+ addWindowListener(new WindowAdapter() {
+ @Override
+ public void windowClosing(WindowEvent e) {
+ super.windowClosing(e);
+ dispose();
+ }
+ });
+ }
+
+ @Override
+ public void mouseClicked(MouseEvent e) {
+ tf.setText("Mouse Clicked"); }
+ @Override
+ public void mousePressed(MouseEvent e) {
+ tf.setText("Mouse Pressed"); }
+ @Override
+ public void mouseReleased(MouseEvent e) {
+ tf.setText("Mouse Released");}
+ @Override
+ public void mouseEntered(MouseEvent e) {
+ tf.setText("Mouse Entered"); }
+ @Override
+ public void mouseExited(MouseEvent e) {
+ tf.setText("Mouse Exited"); }
+ @Override
+ public void mouseDragged(MouseEvent e) {
+ tf.setText("Mouse Dragged"); }
+ @Override
+ public void mouseMoved(MouseEvent e) {
+ String msg = "Mouse moved at " + e.getX() + "," + e.getY();
+ tf.setText(msg); }
+
+ public void launchFrame(){
+ add(tf, BorderLayout.SOUTH);
+ setSize(300, 300);
+ setLocationRelativeTo(null);
+ setVisible(true);
+ }
+ public static void main(String[] args) {
+ MouseEventDemo med = new MouseEventDemo("Mouse Event Demo");
+ med.launchFrame();
+ }a
+
+}
