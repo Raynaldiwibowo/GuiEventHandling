@@ -1,0 +1,61 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.mycompany.guieventhandling;
+
+import java.awt.Frame;
+import java.awt.HeadlessException;
+import java.awt.Label;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
+/**
+ *
+ * @author Outstanding Student
+ */
+public class CloseFrame extends Frame implements WindowListener{
+
+ Label label;
+ public CloseFrame(String title) throws HeadlessException {
+ super(title);
+ label = new Label("Close the Window");
+ addWindowListener(this);
+ }
+
+ public void lauchFrame(){
+ add(label);
+ setSize(300, 300);
+ setLocationRelativeTo(null);
+ setVisible(true);
+ }
+ @Override
+ public void windowOpened(WindowEvent e) {
+ System.out.println("Window Opened"); }
+ @Override
+ public void windowClosing(WindowEvent e) {
+ System.out.println("Window Closing");
+ setVisible(false);
+ System.exit(0); }
+ @Override
+ public void windowClosed(WindowEvent e) {
+ System.out.println("Window Closed"); }
+ @Override
+ public void windowIconified(WindowEvent e) {
+ System.out.println("Window Iconified"); }
+ @Override
+ public void windowDeiconified(WindowEvent e) {
+ System.out.println("Window Deiconified"); }
+ @Override
+ public void windowActivated(WindowEvent e) {
+ System.out.println("Window Activated"); }
+ @Override
+ public void windowDeactivated(WindowEvent e) {
+ System.out.println("Window Deactified");}
+
+ public static void main(String[] args) {
+ CloseFrame cf = new CloseFrame("Close Frame");
+ cf.lauchFrame();
+ }
+}
