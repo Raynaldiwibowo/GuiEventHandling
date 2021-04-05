@@ -67,6 +67,6 @@ MouseMotionListener{
  public static void main(String[] args) {
  MouseEventDemo med = new MouseEventDemo("Mouse Event Demo");
  med.launchFrame();
- }a
+ }
 
 }
